@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    let apiBody = {
+      req_body_type: 'form',
+    };
+    let test = {
+      form: processingForm,
+      file: processingFile,
+      raw: processingRaw,
+      json: processingJson,
+    };
+    function generateReqJsonObject(apiBody) {
+      test[apiBody.req_body_type](apiBody);
+    }
+    function processingForm(params) {
+      alert(params);
+    }
+    function processingFile(params) {
+      alert(params);
+    }
+    function processingRaw(params) {
+      alert(params);
+    }
+    function processingJson(params) {
+      alert(params);
+    }
+    function processingQuery(params) {
+      alert(params);
+    }
+    generateReqJsonObject(apiBody);
+  </script>
+</html>

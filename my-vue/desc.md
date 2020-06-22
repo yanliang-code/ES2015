@@ -1,0 +1,7 @@
+- 本机想装多个版本的 node，可安装 nvm，进行管理具体使用哪个版本的 node
+- npm install eslint -> eslint --init
+- npm i -g http-server
+  - Http-server 是一个轻量级的基于 nodejs 的 http 服务器
+  - 好处：可以使任意一个目录成为服务器的目录，完全抛开后台的沉重工程，直接运行想要的 js 代码
+  - 使用方法：进行指定目录，执行 http-server 命令
+- 通过将存放 json 数的指定目录，启动成服务器，在前台工程中配置代理 proxy，将指定请求转发到指定 http 路径上，并指定请求文件

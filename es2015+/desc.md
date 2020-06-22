@@ -1,0 +1,117 @@
+- 目标
+  - 复习旧的 ES5 语法，学习新的 ES6+语法，逐步改变编程思维
+- lesson2-1.js
+  - 作用域
+- lesson2-2.js
+  - let 与 const
+- lesson2-3.js
+  - 遍历数组的方法（ES4-ES6）
+  - 伪数组转化为数组(ES5、ES6)
+  - Array.from 的妙用（初始化指定内容的数组）
+  - 创建一个新数组（指定初始化内容）
+  - 数组查找元素的方法
+- lesson2-4.js
+  - 如何声明一个类
+  - ES5 与 ES6 的区别，优缺点
+  - ES6 声明类时构造器、属性（字段）、方法、继承的详述
+- lesson2-5.js
+  - 处理函数参数的默认值
+  - 怎么处理不确定参数
+  - rest 参数的逆运算
+  - 箭头函数
+- lesson2-6.js（数据结构）
+  - Object 属性的增强
+  - Set（key、value 一致的 Object；内容唯一）
+  - Map（key、value，key 可为任意类型）
+  - Object.assign（对象拷贝）
+- lesson2-7.js
+  - y 修饰符
+  - u 修饰符
+- lesson2-8.js
+  - 字符串换行、包含变量、表达式、逻辑运算情况
+- lesson2-9.js
+  - Array 解构赋值 Destructuring
+  - Object 解构赋值 Destructuring
+- lesson2-10.js
+  - 使用回调的意义
+  - 回调地狱的救星 Promise
+  - Promise 的所有状态以及改变方式（resolve、reject）
+  - Promise 上的静态方法和实例方法
+  - Promise 异常集中处理方式（catch）
+  - 不同类型返回值，如何统一使用 Promise 对象的形式返回
+  - 串行与并行的不同写法(all、race)
+- lesson2-11.js
+  - 什么是 Reflect 反射机制（编译阶段不知道哪个类被加载，而是在运行时才加载、执行）
+  - 什么场景下使用此机制，更加灵活简单，动态化
+  - Object 与 Reflect 关系
+  - Reflect 下相关 API 的使用方法
+- lesson2-12.js
+  - 代理 proxy
+  - 两个应用场景：租房、表单数据验证
+  - 如何拦截、防止破坏结构、规范验证、监控上报、生成只读的组件 id
+  - 撤销代理，让其失效
+- lesson2-13.js
+  - ES6 如何让遍历停下来（不是跳出、继续，是暂停）
+  - 声明函数的\*、函数内部暂停作用的 yield、generator 函数可嵌套、通过 next 函数恢复执行，返回值含有当前的数据以及是否结束
+  - 使用 generator 函数实现的场景
+    - 抽奖
+    - 逢 3 过
+    - 斐波那契数列
+- lesson2-14.js
+  - ES6 让不支持遍历的数据结构“可遍历”
+  - 迭代器协议、可迭代器协议
+- lesson2-15.js
+  - 模块的导出、导入
+  - export 可导出多个变量，导入时需要使用{}，并且知道导出的模块名，列别名需要使用 as
+  - export default 只可导出一个变量，导入时不需要使用{}以及导出的模块名，列别名直接改 import 时的变量名
+  - 若导出模块使用大量 export 导出，可通过*来全部导入，此时通过 export default 导出，会默认挂载到 Mod 的 default 属性上 ---> import * as Mod from './lesson2-14-mod';
+  - 导出的模块，本模块也可以使用
+- lesson3-1.js
+  - ES7 新增语法
+  - Array includes 方法，判断指定数组内是否含有指定元素，返回 true、false
+  - 计算指定数的指定次方，原写法：Math.pow(2, 6)；es7 简写：2 \*\* 6
+- lesson4-1.js
+  - ES8 新增语法
+  - async、await 是 Primose 的语法糖
+  - async 函数内调用其他异步函数（必须返回 Promise 对象），搭配使用 await 将异步改为同步
+- lesson4-2.js
+  - ES8 新增语法
+  - Object 快速遍历的方法
+  - 1.for in 2.for of 与 Object.entries 搭配 3.Object.keys、Object.values（ES8）
+- lesson4-3.js
+  - ES8 新增语法
+  - String 补白方式
+  - padStart 头部补位，a 指定位数，低于此位数，需要进行补位。b 是补位时使用的字符串；padEnd 同理
+  - 若补位小于字符串的位数，会自动在字符串上截取需要的位数
+- lesson4-4.js
+  - ES8 新增语法
+  - 获取 Object 数据的描述符
+  - Object.getOwnPropertyDescriptors(data) -- Object.getOwnPropertyDescriptor(data, 'Lima')
+- lesson5-1.js
+  - ES9 新增语法
+  - for await of
+    - for await of 解决的问题？ 遍历的数据结构中存在异步操作（将异步改为同步执行）
+    - for await of 与 for of 的区别是什么
+    - 自定义异步结构如何遍历
+- lesson5-2.js
+  - ES9 新增语法
+  - Promise.finally()
+    - 不管指定的异步操作返回的 resolve、reject，最终都会走 finally
+- lesson5-3.js
+  - ES9 新增语法
+  - 新增 Object 的 Rest&Spread 方法
+  - 剩余运算符、展开运算符
+- lesson5-4.js
+  - ES9 新增语法
+    - 1.正则.支持 匹配 四个字节的 u7f16 字符、行终止符/n /r
+    - 2.支持给分组命名
+    - 3.支持后行断言
+- lesson6-1.js
+  - ES10 新增语法
+    - 1.支持 0xD800-0xDFFF 转义
+    - 2.数组扁平化输出 flat
+    - 3.字符串去除空格 trim
+    - 4.matchAll 正则匹配指定字符串多个位置（多种方法）
+    - 5.Object.fromEntries 将对象转化为数组（多种应用）
+    - 6.try catch 的增强
+    - 7.新增 bigInt 类型

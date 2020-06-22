@@ -77,6 +77,7 @@ function loadScriptEs6(src) {
     Promise返回值随着状态改变时，是如何传递数据的
 */
 // =====================================================
+/*
 // Promise对象原型上自带then函数，返回值为Promise对象；
 // then内部入参有两个，一个是成功回调(resolve)，一个是失败回调(reject)
 // 那为啥上面我们没定义两个函数入参，默认then会放回空的Promise对象，这样能保证可连续进行链式调用
@@ -103,3 +104,76 @@ loadScriptEs6('./1.js')
       console.log(error);
     }
   );
+*/
+// 上面的错误捕获方式重复多次，下面介绍比较优雅的方式
+// catch是实例方法（Promise原型链上的方法）
+// 不要在loadScriptEs6中使用throw new Error方式抛出异常，这种Promise的catch方法是无法捕获的，只有使用reject改变Promise状态才行
+loadScriptEs6('./1.js')
+  .then(() => {
+    return loadScriptEs6('./2.js');
+  })
+  .then(() => {
+    return loadScriptEs6('./4.js');
+  })
+  .catch((err) => {
+    console.log('统一处理异常====', err);
+  });
+
+// ==================================================
+function test(bool) {
+  if (bool) {
+    // 实例化Promise对象，必须使用定义函数，并且使用两个形参
+    // 异步情况
+    return new Promise((resolve, reject) => {
+      resolve('bool===1');
+    });
+  } else {
+    // 同步情况（resolve -> result，reject -> error）
+    return Promise.resolve(42);
+  }
+}
+// 1、0两种情况下，有时返回Promise对象，有时返回具体数字。返回具体数字时，无法使用Promise对象的方法，导致报错
+// 所以，需要保证在任何情况下，返回的都是Promise对象（通过使用Promise的静态方法）
+test(1).then((val) => {
+  console.log('test===', val);
+});
+
+// 并发请求，等待多个请求都成功返回，进行所有数据的组装
+// Promise.all方法的入参是Promise数组，它的返回值是Promise，就可以使用then实例方法，内部定义resolve、reject回调
+// 无需关心多个接口返回的前后顺序，Promise内部会等待所有请求都返回成功，在回调then内的resolve函数；若有一个失败，就会走reject函数
+Promise.all([test(1), test(0), test(1)]).then((val) => {
+  console.log('Promise.all===', val);
+});
+
+// 模拟异步请求
+const p1 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(1);
+    }, 1000);
+  });
+};
+const p2 = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(2);
+    }, 0);
+  });
+};
+// 多个请求，先到先得，有一个返回即可
+Promise.race([p1(), p2()]).then((val) => {
+  console.log('Promise.race===', val);
+});
+
+/*
+阅读：
+    1.Promise
+    2.fetch
+    3.JavaSctipt Promise
+    4.ES6 Promise in Depth
+    5.Using Promises
+    6.JavaScript Promises for Dummies
+练习：
+    1.按顺序加载脚本的代码不太直观看出顺序执行的过程，如果按顺序延时执行是不是更好理解呢
+    2.请用Promise实现一个接口
+*/
